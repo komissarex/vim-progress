@@ -115,6 +115,8 @@ syn match ProgressShowTab "\t"
 " syn match   ProgressSpaceError "\s\+$"
 
 syn region ProgressComment		start="/\*"  end="\*/" contains=ProgressComment,ProgressTodo,ProgressDebug,@Spell
+syn region ProgressLineComment		start=+//+   end=/$/   contains=ProgressTodo,ProgressDebug,@Spell
+
 syn region ProgressInclude		start="[{]" end="[}]" contains=ProgressInclude,ProgressPreProc,ProgressString,ProgressComment
 syn region ProgressPreProc		start="&" end="\>" contained
 
@@ -258,6 +260,7 @@ if version >= 508 || !exists("did_progress_syntax_inits")
 	HiLink ProgressByte		Number
 	HiLink ProgressCase		Repeat
 	HiLink ProgressComment		Comment
+	HiLink ProgressLineComment	Comment
 	HiLink ProgressConditional	Conditional
 	HiLink ProgressDebug		Debug
 	HiLink ProgressDo		Repeat
