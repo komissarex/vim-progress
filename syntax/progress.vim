@@ -23,9 +23,9 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 if version >= 600
-  setlocal iskeyword=@,48-57,_,-,!,#,$,%
+  setlocal iskeyword=@,48-57,_,-,!,#,$,%,&
 else
-  set iskeyword=@,48-57,_,-,!,#,$,%
+  set iskeyword=@,48-57,_,-,!,#,$,%,&
 endif
 
 " The Progress editor doesn't cope with tabs very well.
@@ -115,7 +115,7 @@ syn match ProgressShowTab "\t"
 " syn match   ProgressSpaceError "\s\+$"
 
 syn region ProgressComment		start="/\*"  end="\*/" contains=ProgressComment,ProgressTodo,ProgressDebug,@Spell
-syn region ProgressInclude		start="^[ 	]*[{]" end="[}]" contains=ProgressPreProc,ProgressOperator,ProgressString,ProgressComment
+syn region ProgressInclude		start="[{]" end="[}]" contains=ProgressInclude,ProgressPreProc,ProgressString,ProgressComment
 syn region ProgressPreProc		start="&" end="\>" contained
 
 " This next line works reasonably well.
@@ -239,6 +239,8 @@ syn keyword ProgressOperator	XML-NODE-NAME XML-NODE-TYPE XML-SCHEMA-PAT[H] XML-S
 
 syn keyword ProgressType	CHAR[ACTER] I[NTEGER] INT64 DEC[IMAL] LOG[ICAL] DA[TE] DATETIME DATETIME-TZ
 
+syn keyword ProgressPreProcDirective  &GLOB[AL-DEFINE] &SCOP[ED-DEFINE] &UNDEF[INE] &MESSAGE &IF &THEN &ELSEIF &ELSE &ENDIF &WEBSTREAM
+
 syn sync lines=800
 
 " Define the default highlighting.
@@ -268,6 +270,7 @@ if version >= 508 || !exists("did_progress_syntax_inits")
 	HiLink ProgressNumber		Number
 	HiLink ProgressOperator		Operator
 	HiLink ProgressPreProc		PreProc
+	HiLink ProgressPreProcDirective	PreProc
 	HiLink ProgressProcedure	Procedure
 	HiLink ProgressQuote		Delimiter
 	HiLink ProgressRepeat		Repeat
