@@ -51,15 +51,7 @@ syn keyword ProgressTodo			contained	TODO BUG FIX
 syn keyword ProgressDebug			contained	DEBUG
 syn keyword ProgressDebug			debugger
 
-" If you like to highlight the whole line of
-" the start and end of procedures
-" to make the whole block of code stand out:
-"syn match ProgressProcedure		"^\s*procedure.*"
-"syn match ProgressProcedure		"^\s*end\s\s*procedure.*"
-"syn match ProgressFunction		"^\s*function.*"
-"syn match ProgressFunction		"^\s*end\s\s*function.*"
-" ... otherwise use this:
-syn keyword ProgressFunction	procedure function
+syn keyword ProgressFunction	PROCEDURE FUNCTION
 
 syn keyword ProgressReserved	* + , - . / : < = > ? @ ACCUM[ULATE] ACTIVE-FORM ACTIVE-WINDOW ADD ALIAS ALL ALTER AMBIG[UOUS] ANALYZ[E] AND ANY APPLY AS ASC[ENDING] ASSIGN ASYNCHRONOUS AT ATTR[-SPACE]
 syn keyword ProgressReserved	AUDIT-CONTROL AUDIT-POLICY AUTHORIZATION AUTO-RET[URN] AVAIL[ABLE] BACK[GROUND] BEFORE-H[IDE] BEGINS BELL BETWEEN BIG-ENDIAN BLANK BREAK BTOS BUFFER-COMP[ARE] BUFFER-COPY BY BY-POINTER
@@ -93,7 +85,8 @@ syn keyword ProgressReserved	XCODE-SESSION-KEY XREF XREF-XML YES ^ _CBIT _CONTRO
 syn region ProgressString matchgroup=ProgressQuote start=+"+ end=+"+ skip=+\~'\|\~\~\|\~"+ contains=@Spell
 syn region ProgressString matchgroup=ProgressQuote start=+'+ end=+'+ skip=+\~'\|\~\~\|\~"+ contains=@Spell
 
-syn match  ProgressIdentifier		"\<[a-zA-Z_][a-zA-Z0-9_]*\>()"
+syn match  ProgressFunctionCall		/\v\k+%(\s*\()@=/
+syn match  ProgressProcedureCall	/\v%(RUN\s+)@<=\k+/
 
 " syn match  ProgressDelimiter		"()"
 
@@ -267,7 +260,8 @@ if version >= 508 || !exists("did_progress_syntax_inits")
 	HiLink ProgressEndError		Error
 	HiLink ProgressFor		Repeat
 	HiLink ProgressFunction		Procedure
-	HiLink ProgressIdentifier	Identifier
+	HiLink ProgressFunctionCall	Identifier
+	HiLink ProgressProcedureCall	Identifier
 	HiLink ProgressInclude		Include
 	HiLink ProgressMatrixDelimiter	Identifier
 	HiLink ProgressNumber		Number
