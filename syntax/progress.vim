@@ -1,15 +1,15 @@
 " Vim syntax file
-" Language:		Progress 4GL
+" Language:		Progress OpenEdge ABL
 " Filename extensions:	*.p (collides with Pascal),
 "			*.i (collides with assembler)
 "			*.w (collides with cweb)
-" Maintainer:		Chris Ruprecht		<chrisSPAX@cdrbill.com> Remove SPAXY spam block
-" Contributors:		Philip Uren		<philuSPAXY@ieee.org> Remove SPAXY spam block
+"			*.cls
+" Maintainer:		Egor Komissarov		<komissarex@gmail.com>
+" Contributors:		Chris Ruprecht		<chrisSPAXY@cdrbill.com> Remove SPAXY spam block
+" 			Philip Uren		<philuSPAXY@ieee.org>
 " 		        Matthew Stickney	<mtstickneySPAXY@gmail.com>
 "			Mikhail Kuperblum	<mikhailSPAXY@whasup.com>
 "			John Florian		<jflorianSPAXY@voyager.net>
-" Version:              14
-" Last Change:		July 17, 2015: Updated keywords for Progress OE 11.5.1
 
 " For version 5.x: Clear all syntax item
 " For version 6.x: Quit when a syntax file was already loaded

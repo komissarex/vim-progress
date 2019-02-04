@@ -1,5 +1,5 @@
 " Vim filetype plugin file
-" Language:     Progress ABL
+" Language:     Progress OpenEdge ABL
 " Maintainer:   Egor Komissarov <komissarex@gmail.com>
 
 " Automatically convert Progress keywords to upper case
