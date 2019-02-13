@@ -16,3 +16,20 @@ function! progress#uppercase_keyword(kwd)
 
   return toupper(a:kwd)
 endfunction
+
+" The list of match words for matchit plugin
+"
+function! progress#get_match_words()
+  if synIDattr(synID(line('.'), col('.'), 1), 'name') =~# 'Comment\|String\|Include'
+    return ''
+  endif
+
+  let l:mw  = '\%(\<end\s\+\)\@<!' " not starts with 'end'
+  let l:mw .= '\<\%(case\|catch\|class\|constructor\|destructor\|enum\|finally\|function\|' .
+                 \ 'get\|interface\|method\|procedure\|set\|triggers\|do\|repeat\|' .
+                 \ '\%(for\s\+\%(each\|first\|last\)\)\)\>'
+  let l:mw .= '\%(\.\)\@!' " not ends with '.'
+  let l:mw .= ':\<end\>'
+
+  return l:mw
+endfunction

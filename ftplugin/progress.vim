@@ -19,3 +19,10 @@ if g:progress_uppercase
     exec 'inoreabbrev <silent> <buffer> ' . kwd . ' <C-R>=progress#uppercase_keyword("' . kwd . '") <CR>'
   endfor
 endif
+
+" Support for matchit plugin
+if exists("loaded_matchit")
+  let b:match_ignorecase = 1
+  let b:match_skip = 's:Comment\|String\|Include'
+  let b:match_words = 'progress#get_match_words()'
+endif
