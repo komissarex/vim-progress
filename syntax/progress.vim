@@ -113,6 +113,9 @@ syn region ProgressLineComment		start=+//+   end=/$/   contains=ProgressTodo,Pro
 syn region ProgressInclude		start="[{]" end="[}]" contains=ProgressInclude,ProgressPreProc,ProgressString,ProgressComment
 syn region ProgressPreProc		start="&" end="\>" contained
 
+" @Annotation[(attribute = 'value'[,attribute = 'value']...)].
+syn match  ProgressAnnotation		"@\s*\k*"
+
 " This next line works reasonably well.
 " syn match ProgressOperator        "[!;|)(:.><+*=-]"
 "
@@ -277,6 +280,7 @@ if version >= 508 || !exists("did_progress_syntax_inits")
 	HiLink ProgressTodo		Todo
 	HiLink ProgressType		Statement
 	HiLink ProgressShowTab		Error
+	HiLink ProgressAnnotation	PreProc
 
 	delcommand HiLink
 endif
