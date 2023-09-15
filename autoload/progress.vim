@@ -2,7 +2,7 @@
 "
 function! progress#get_keywords(type)
   let l:keywords = execute('syn list ' . a:type)
-  return split(matchstr(l:keywords, '\v((' . a:type . ')\s*xxx\s)@<=\_.{-}(links|match)@='))
+  return split(matchstr(l:keywords, '\v((' . a:type . ')\s*xxx\s)@<=\_.{-}(links|\ match\ )@='))
 endfunction
 
 " Replace keyword with its uppercase version (outside of comments or strings)

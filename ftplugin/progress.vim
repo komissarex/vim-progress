@@ -26,3 +26,8 @@ if exists("loaded_matchit")
   let b:match_skip = 's:Comment\|String\|Include'
   let b:match_words = 'progress#get_match_words()'
 endif
+
+" Set default compiler
+if get(b:, 'current_compiler', '') ==# ''
+  compiler progress
+endif
